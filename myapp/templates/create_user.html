@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+</head>
+<body>
+    <div>
+        <h1>Create User</h1>
+        <form action="/create_user" method="POST">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter username">
+                <div id="username-error"></div>
+            </div>
+            
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter email">
+                <div id="email-error"></div>
+            </div>
+            
+            <div>
+                <label for="password1">Password</label>
+                <input type="password" id="password1" name="password1" required placeholder="Enter password">
+                <div id="password1-error"></div>
+            </div>
+            
+            <div>
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" required placeholder="Confirm password">
+                <div id="password2-error"></div>
+            </div>
+            
+            <div>
+                <label for="user_type">User Type</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Seller">Seller</option>
+                </select>
+                <div id="user_type-error"></div>
+            </div>
+            
+            <button type="submit">Create User</button>
+        </form>
+    </div>
+
+    <script>
+        // Example of simple validation if needed
+        document.querySelector("form").onsubmit = function(e) {
+            let isValid = true;
+            let password1 = document.getElementById("password1").value;
+            let password2 = document.getElementById("password2").value;
+
+            // Password confirmation check
+            if (password1 !== password2) {
+                document.getElementById("password2-error").innerText = "Passwords do not match.";
+                isValid = false;
+            }
+
+            // If validation fails, prevent form submission
+            if (!isValid) {
+                e.preventDefault();
+            }
+        };
+    </script>
+</body>
+</html>
